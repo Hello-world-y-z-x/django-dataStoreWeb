@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>File List</h2>
+  <p><a href="{% url 'upload' %}">Upload New</a> |
+     <a href="{% url 'logout' %}">Logout</a></p>
+  <ul>
+    {% for f in files %}
+      <li>
+        {{ f.uploaded_at }} —
+        <a href="{% url 'download' f.id %}">{{ f.file.name }}</a>
+        (by {{ f.uploaded_by.username }})
+      </li>
+    {% empty %}
+      <li>No files</li>
+    {% endfor %}
+  </ul>
+</body>
+</html>
